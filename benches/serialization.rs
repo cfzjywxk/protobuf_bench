@@ -27,8 +27,9 @@ fn criterion_benchmark(c: &mut Criterion) {
     c.bench_function("rust-protobuf deserialize", |b| {
         let bytes = test_message.write_to_bytes().unwrap();
         b.iter(|| {
-            let msg = RustProtobufTestMessage::parse_from_bytes(&bytes).unwrap();
-            black_box(msg);
+            let mut res = RustProtobufTestMessage::new();
+            let _ = res.merge_from_bytes(&bytes).unwrap();
+            black_box(res);
         })
     });
 

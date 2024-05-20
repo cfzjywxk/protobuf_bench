@@ -4,7 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-protobuf = { version = "3.4", features = ["bytes"] }
+protobuf = { git = "https://github.com/pingcap/rust-protobuf", branch = "v2.8" }
+# protobuf = { version = "3.4", features = ["bytes"] }
 prost = "0.12.4"
 prost-derive = "0.12.4"
 quick-protobuf = "0.8.1"
@@ -13,14 +14,16 @@ quick-protobuf = "0.8.1"
 criterion = "0.5.1"
 
 [build-dependencies]
-protobuf-codegen = "3.4"  # or the latest version
+# protobuf-codegen = "3.4"  # or the latest version
+protobuf-codegen = { git = "https://github.com/pingcap/rust-protobuf", branch = "v2.8" }
 prost-build = "0.12.4"
 quick-protobuf = "0.8.1"
 pb-rs = "0.9.1"
+protobuf-build = { git = "https://github.com/tikv/protobuf-build" }
 
 [patch.crates-io]
-#protobuf = { git = "https://github.com/pingcap/rust-protobuf", branch = "v2.8" }
-#protobuf-codegen = { git = "https://github.com/pingcap/rust-protobuf", branch = "v2.8" }
+protobuf = { git = "https://github.com/pingcap/rust-protobuf", branch = "v2.8" }
+protobuf-codegen = { git = "https://github.com/pingcap/rust-protobuf", branch = "v2.8" }
 
 [[bench]]
 name = "serialization"
